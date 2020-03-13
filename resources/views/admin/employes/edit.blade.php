@@ -24,7 +24,11 @@
                     <label for="">Horario</label>
                     <select name="schedule_id" class="form-control" required>
                         @foreach ($schedules as $schedule)
-                            <option value="{{ $schedule->id }}" selected="{{ ($employe->schedule_id == $schedule->id) ? true : false }}"> {{ $schedule->hour_in   }} a {{ $schedule->hour_out }}</option>
+                            @if ($schedule->id == $employe->schedule_id)
+                                <option value="{{ $schedule->id }}" selected> {{ $schedule->hour_in   }} a {{ $schedule->hour_out }}</option>
+                            @else
+                                <option value="{{ $schedule->id }}"> {{ $schedule->hour_in   }} a {{ $schedule->hour_out }}</option>
+                            @endif
                         @endforeach
                     </select>
                 </div>

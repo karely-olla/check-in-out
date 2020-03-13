@@ -15,11 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('checador');
 
 Route::resource('users', 'UserController');
 Route::resource('schedules', 'ScheduleController');
 Route::resource('employes', 'EmployeController');
+Route::resource('inouts', 'InOutController');
 
 Auth::routes();
 

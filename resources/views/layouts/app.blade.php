@@ -84,5 +84,12 @@
         </main>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        $(function(){
+            setTimeout(() => {
+                $('#message-check').fadeOut(250);
+            }, 3500);
+        })
+    </script>
 </body>
 </html>

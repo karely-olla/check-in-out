@@ -12,4 +12,14 @@ class Employe extends Model
     {
         return $this->belongsTo(Schedule::class);
     }
+
+    public function delays()
+    {
+        return $this->hasMany(Delay::class);
+    }
+
+    public function inouts()
+    {
+        return $this->hasMany(InOut::class);
+    }
 }

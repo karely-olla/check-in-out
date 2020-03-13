@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,8 +19,8 @@ class CreateInOutsTable extends Migration
             $table->foreignId('employe_id');
             $table->foreign('employe_id')->references('id')->on('employes');
             $table->time('hour_in');
-            $table->time('hour_out');
-            $table->timestamps();
+            $table->time('hour_out')->nullable();
+            $table->date('created_at')->default(Carbon::parse(now())->format('Y-m-d'));
         });
     }
 
