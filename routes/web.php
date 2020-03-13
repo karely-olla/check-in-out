@@ -21,6 +21,7 @@ Route::resource('users', 'UserController');
 Route::resource('schedules', 'ScheduleController');
 Route::resource('employes', 'EmployeController');
 Route::resource('inouts', 'InOutController');
+Route::resource('delays', 'DelayController');
 
 Auth::routes();
 

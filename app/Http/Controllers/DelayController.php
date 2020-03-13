@@ -14,7 +14,8 @@ class DelayController extends Controller
      */
     public function index()
     {
-        //
+        $delays = Delay::with('employe')->get();
+        return view('admin.delays.index',compact('delays'));
     }
 
     /**

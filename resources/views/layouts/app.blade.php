@@ -40,6 +40,12 @@
                             <li class="nav-item">
                                 <a href="{{ route('employes.index') }}" class="nav-link">Empleados</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('inouts.index') }}" class="nav-link">Entradas/Salidas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('delays.index') }}" class="nav-link">Retardos</a>
+                            </li>
                         </ul>
 
                         <!-- Right Side Of Navbar -->

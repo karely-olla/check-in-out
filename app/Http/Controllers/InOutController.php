@@ -17,7 +17,8 @@ class InOutController extends Controller
      */
     public function index()
     {
-        //
+        $inouts = InOut::with('employe')->get();
+        return view('admin.inouts.index',compact('inouts'));
     }
 
     /**
