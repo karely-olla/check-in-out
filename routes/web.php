@@ -21,7 +21,10 @@ Route::resource('users', 'UserController');
 Route::resource('schedules', 'ScheduleController');
 Route::resource('employes', 'EmployeController');
 Route::resource('inouts', 'InOutController');
+Route::get('tbl/inouts','InOutController@table');
 Route::resource('delays', 'DelayController');
+Route::resource('hoursextras', 'HourExtraController');
+Route::get('tbl/hoursextras','HourExtraController@table');
 
 Auth::routes();
 

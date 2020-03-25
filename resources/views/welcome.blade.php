@@ -15,6 +15,7 @@
                 <form action="{{ route('inouts.store') }}" method="post">
                     @csrf
                     <input type="password" autofocus name="key" class="form-control form-control-lg" placeholder="Coloca tu clave para checar" required>
+                    <a href="{{ route('login') }}">Acceder como administrador</a>
                 </form>
             </div>
         </div>

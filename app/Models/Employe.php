@@ -18,6 +18,11 @@ class Employe extends Model
         return $this->hasMany(Delay::class);
     }
 
+    public function hoursExtras()
+    {
+        return $this->hasMany(HourExtra::class);
+    }
+
     public function inouts()
     {
         return $this->hasMany(InOut::class);

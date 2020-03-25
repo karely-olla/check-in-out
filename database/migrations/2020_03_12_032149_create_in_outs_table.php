@@ -20,7 +20,7 @@ class CreateInOutsTable extends Migration
             $table->foreign('employe_id')->references('id')->on('employes');
             $table->time('hour_in');
             $table->time('hour_out')->nullable();
-            $table->date('created_at')->default(Carbon::parse(now())->format('Y-m-d'));
+            $table->date('created_at');
         });
     }
 

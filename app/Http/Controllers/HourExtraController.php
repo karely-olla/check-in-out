@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\HourExtra;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class HourExtraController extends Controller
 {
@@ -14,7 +15,7 @@ class HourExtraController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.hours_extras.index');
     }
 
     /**
@@ -81,5 +82,15 @@ class HourExtraController extends Controller
     public function destroy(HourExtra $hourExtra)
     {
         //
+    }
+
+    public function table()
+    {
+        $hours_extras=HourExtra::all();
+        return DataTables::of($hours_extras)
+            ->addColumn('employe', function($hours_extras){
+                return $hours_extras->employe->name;
+            })
+            ->make(true);
     }
 }

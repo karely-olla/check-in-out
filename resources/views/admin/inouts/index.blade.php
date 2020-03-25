@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    {{-- <div class="row justify-content-center">
         <div class="col-md-8">
             <h2>Entradas y Salidas de Empleado</a></h2>
             <hr>
@@ -27,6 +27,7 @@
                 </tbody>
             </table>
         </div>
-    </div>
+    </div> --}}
+    <in-outs-table></in-outs-table>
 </div>
 @endsection

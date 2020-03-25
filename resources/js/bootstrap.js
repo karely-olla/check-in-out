@@ -6,11 +6,24 @@ window._ = require('lodash');
  * code may be modified to fit the specific needs of your application.
  */
 
+import jsZip from 'jszip';
+window.JSZip = jsZip;
 try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
+    // require('admin-lte');
+
+    window.pdfMake = require('pdfmake/build/pdfmake.js');
+    var vfs = require('pdfmake/build/vfs_fonts');
+    window.pdfMake.vfs = vfs.pdfMake.vfs;
+    require('datatables.net-buttons/js/dataTables.buttons.min.js')();
+    require('datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js')();
+    require('datatables.net-buttons/js/buttons.html5.js')();
+    require('datatables.net-buttons/js/buttons.print.js')();
+    require('datatables.net-responsive-bs4')();
+    var dt = require('datatables.net-bs4')(window, $);
 } catch (e) {}
 
 /**

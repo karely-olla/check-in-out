@@ -46,6 +46,9 @@
                             <li class="nav-item">
                                 <a href="{{ route('delays.index') }}" class="nav-link">Retardos</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('hoursextras.index') }}" class="nav-link">Horas Extras</a>
+                            </li>
                         </ul>
 
                         <!-- Right Side Of Navbar -->

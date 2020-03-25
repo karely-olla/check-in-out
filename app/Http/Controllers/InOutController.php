@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Delay;
-use App\Models\Employe;
-use App\Models\InOut;
 use Carbon\Carbon;
+use App\Models\Delay;
+use App\Models\InOut;
+use App\Models\Employe;
+use App\Models\HourExtra;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
+// use Yajra\DataTables\DataTables;
 
 class InOutController extends Controller
 {
@@ -44,8 +47,16 @@ class InOutController extends Controller
         if(InOut::where('created_at','=', Carbon::parse(now())->format('Y-m-d'))
                 ->where('employe_id','=',$employe->id)
                 ->whereNull('hour_out')->exists()){
-            // Si existe registramos su hora de salida
             $hour_out = Carbon::parse(now())->format('H:i');
+            // return Carbon::parse($hour_out)->diffInHours(Carbon::parse($employe->schedule->hour_out)->format('H:i'));
+            $hours_extras=Carbon::parse($hour_out)->diffInHours(Carbon::parse($employe->schedule->hour_out)->format('H:i'));
+            if ( $hours_extras>=1) {
+                HourExtra::create([
+                    'employe_id' => $employe->id,
+                    'hours' => $hours_extras
+                ]);
+            }
+            // Si existe registramos su hora de salida
             InOut::where('created_at','=', Carbon::parse(now())->format('Y-m-d'))
                 ->where('employe_id','=',$employe->id)
                 ->whereNull('hour_out')
@@ -126,5 +137,15 @@ class InOutController extends Controller
     public function destroy(InOut $inOut)
     {
         //
+    }
+
+    public function table()
+    {
+        $inouts=InOut::all();
+        return DataTables::of($inouts)
+            ->addColumn('employe', function($inouts){
+                return $inouts->employe->name;
+            })
+            ->make(true);
     }
 }
